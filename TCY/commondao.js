@@ -2,7 +2,7 @@ var condition = require('./globalvalue').condition;
 var result = require('./globalvalue').conition;
 var Tdata = require('./globalvalue').Tdata;   
 
-function CommonDao（Model）{
+function CommonDao(Model){
 	if(typeof Model == 'undefined' || Model == null)
 		throw new Errow('Model can not be null');
 		
@@ -32,5 +32,5 @@ CommonDao.prototype.updatesurplusbyname = function (Tdata, callback){
 			if(error) return callback(error);
 			
 			return callback(null);
-	);
+		});
 }
