@@ -1,3 +1,7 @@
+var condition = require('./globalvalue').condition;
+var result = require('./globalvalue').conition;
+var Tdata = require('./globalvalue').Tdata;   
+
 function CommonDao（Model）{
 	if(typeof Model == 'undefined' || Model == null)
 		throw new Errow('Model can not be null');
@@ -6,7 +10,7 @@ function CommonDao（Model）{
 }
 
 //多條件，範圍查詢用戶要查的信息
-CommonDao.protype.getByCondition = function (condtion, callback){
+CommonDao.protype.getByCondition = function (condition, callback){
 	this.model.find({
 			Tlat: { $gt: condition.lat1, $lt:condition.lat2},
 			Tlon: { $gt: condition.lon1, $lt: condition.lon2},
