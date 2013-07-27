@@ -14,7 +14,11 @@ function condition(){
 result = null;
 
 //Tdata:更新的停車場的信息，包括名字name，剩餘車位數surplus
-function Tdata(){
-	this.name = "川大停車場";
-	this.surplus = 20;
+function Tdata(name, surplus){
+	this.name = name;
+	this.surplus = surplus;
 }
+
+exports.condition = new condition();
+exports.result=result;
+exports.Tdata= new Tdata("川大停車場", 20);
