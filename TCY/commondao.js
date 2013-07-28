@@ -34,3 +34,12 @@ CommonDao.prototype.updatesurplusbyname = function (Tdata, callback){
 			return callback(null);
 		});
 }
+
+//管理員增加停車場
+CommonDao.prototype.addmore = function (TTpoint,callback){
+	this.model.create(TTpoint,function(error,callback){
+		if(error) return callback(error);
+		
+		return callback(null);
+		})
+}
