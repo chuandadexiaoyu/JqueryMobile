@@ -10,5 +10,5 @@ var TPoint = new mongoose.Schema({
 		Tlon: Number
 	});
 	
-	mongoose.model('TPoint',TPoint);
+module.exports = mongoose.model('TPoint',TPoint);
 	mongoose.connect('mongodb://localhost/TPoint');

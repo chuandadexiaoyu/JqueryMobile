@@ -19,6 +19,6 @@ function Tdata(name, surplus){
 	this.surplus = surplus;
 }
 
-exports.condition = new condition();
-exports.result=result;
-exports.Tdata= new Tdata("川大停車場", 20);
+modules.exports.condition = new condition();
+modules.exports.result=result;
+modules.exports.Tdata= new Tdata("川大停車場", 20);
