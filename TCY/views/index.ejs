@@ -7,5 +7,15 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+	
+	
+        <ul>
+          <% result.forEach(function(tpoints){ %>
+            <li><%= tpoints.Ttitle %><%= tpoints.Tscale %>個位子<%= tpoints.Tcretime %><%= tpoints.Tcomment %></li>
+          <% }) %>
+        </ul>
+
+	  
+	  
   </body>
 </html>

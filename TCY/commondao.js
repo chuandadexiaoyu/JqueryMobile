@@ -1,7 +1,7 @@
-var condition = require('./globalvalue').condition;
-var result = require('./globalvalue').result;
-var Tdata = require('./globalvalue').Tdata;   
-
+﻿//var condition = require('./globalvalue').condition;
+//var result = require('./globalvalue').result;
+//var Tdata = require('./globalvalue').Tdata;   
+/*
 function CommonDao(Model){
 	if(typeof Model == 'undefined' || Model == null)
 		throw new Errow('Model can not be null');
@@ -10,7 +10,7 @@ function CommonDao(Model){
 }
 
 //多條件，範圍查詢用戶要查的信息
-CommonDao.protype.getByCondition = function (condition, callback){
+CommonDao.prototype.getByCondition = function (condition, callback){
 	this.model.find(
 			{
 			Tlat: { $gt: condition.lat1, $lt:condition.lat2},
@@ -47,4 +47,35 @@ CommonDao.prototype.addmore = function (TTpoint,callback){
 		})
 }
 
+CommonDao.prototype.findByName = function(name,callback){
+	this.model.find(name,function(error,result,callback){
+		if(error) return callback(error);
+		console.log("查找成功",result);
+		return callback(result);
+	})
+}
+
 module.exports = CommonDao;
+*/
+
+var mongoose = require('./db');
+var Tpoint = exports.model = mongoose.model;
+
+exports.tpointfindbyname = function tpointfind(tname,callback){
+	Tpoint.find({'Ttitle': tname}, function(err, tpoints){
+		if(err) console.log(err);
+		
+		console.log(tpoints);
+		callback("",tpoints);
+		})
+}
+
+exports.tpointfindbynas = function tpointfind(tname,tscale,callback){
+	Tpoint.find({'Ttitle': tname, 'Tscale': {$gt: tscale} }, function(err, tpoints){
+		if(err) console.log(err);
+		
+		console.log(tpoints);
+		callback("",tpoints);
+		})
+}
+

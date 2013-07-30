@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-var TPoint = new mongoose.Schema({
+var Tpoint = new mongoose.Schema({
 		Ttitle: String,
-		Tcomment: [{body: String, auto: String, date: Date}],
+		Tcomment: [{body: String, auth: String, date: Date}],
 		Tcretime: Date,
 		Tscale: Number,
 		Tsurplus: Number,
@@ -10,5 +10,5 @@ var TPoint = new mongoose.Schema({
 		Tlon: Number
 	});
 	
-module.exports = mongoose.model('TPoint',TPoint);
-	mongoose.connect('mongodb://localhost/TPoint');
+exports.model = mongoose.model('Tpoint',Tpoint);
+	mongoose.connect('mongodb://localhost/Tpoint');

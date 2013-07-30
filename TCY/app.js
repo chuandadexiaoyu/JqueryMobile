@@ -1,10 +1,9 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
-  , mongoose = require('mongoose')	
+  , db = require('./db')	
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
