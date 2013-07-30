@@ -1,4 +1,4 @@
-
+﻿
 /*
  * GET home page.
  */
@@ -24,7 +24,7 @@ exports.index = function(req, res){
 		});
 */
 	tpointdao.tpointfindbynas("川大停車場",50,function(err,tpoints){
-		res.render('index',{
+		res.render('test',{
 			title: 'Express',
 			result: tpoints,
 			});

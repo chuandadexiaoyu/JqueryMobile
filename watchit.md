@@ -1,4 +1,4 @@
-1.mongoose每次用完後記得關閉連接 mongoose.connecttion.close()；
-2.mongoose多條件，範圍查詢；
-3.列表的多頁顯示；
-4.module.exports 和 exports 的作用；
+1.mongoose多條件，範圍查詢；
+2.列表的多頁顯示；
+3.module.exports 和 exports 的作用；
+4.HTML5的localStorage只能存取建值，用JSON處理；
