@@ -24,6 +24,9 @@ exports.index = function(req, res){
 		});
 */
 	tpointdao.tpointfindbynas("川大停車場",50,function(err,tpoints){
+		console.log(tpoints);
+		console.log(tpoints.length);
+		console.log("傳值成功，開始跳轉");
 		res.render('test',{
 			title: 'Express',
 			result: tpoints,

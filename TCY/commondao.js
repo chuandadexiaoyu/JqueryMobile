@@ -71,11 +71,9 @@ exports.tpointfindbyname = function tpointfind(tname,callback){
 }
 
 exports.tpointfindbynas = function tpointfind(tname,tscale,callback){
-	Tpoint.find({'Ttitle': tname, 'Tscale': {$gt: tscale} }, function(err, tpoints){
+	Tpoint.find({'Ttitle': tname, 'Tscale': {$gte: tscale} }, function(err, tpoints){
 		if(err) console.log(err);
-		
-		console.log(tpoints);
-		callback("",tpoints);
+		callback("查找成功",tpoints);
 		})
 }
 
