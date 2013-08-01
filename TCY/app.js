@@ -7,9 +7,12 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+//  , io = require('socket')
+  ;
 
 var app = express();
+
 
 // all environments
 
@@ -33,6 +36,19 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket){
+		setInterval(function(){
+			socket.emit('news', {hello: 'world'})}
+			, 5000);
+		socket.on('my other event', function(data){
+				console.log(data);
+//				socket.emit('news', {hello: 'world'});
+			});
+	});
