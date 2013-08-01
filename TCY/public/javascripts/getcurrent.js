@@ -1,19 +1,21 @@
 var options = {
   enableHighAccuracy: true,
-  timeout: 5000,
+  timeout: 50000,
   maximumAge: 0
 };
 
 function success(pos) {
   var crd = pos.coords;
+  console.log(crd.latitude);
+  console.log(crd.longitude);
   //HTML5本地存儲數據
   if(typeof(Storage)!="undefined"){
 		console.log("web storage supports");
 		lat = crd.latitude;
 		lon = crd.longitude;
 		var currentposition = {
-			'lon': lon,
-			'lat': lat
+			'Tlon': lon,
+			'Tlat': lat
 		};				
 		localStorage.currentposition = JSON.stringify(currentposition);
 		localStorage.currentacu = crd.accuracy;

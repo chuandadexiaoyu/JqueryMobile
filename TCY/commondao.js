@@ -70,8 +70,9 @@ exports.tpointfindbyname = function tpointfind(tname,callback){
 		})
 }
 
-exports.tpointfindbynas = function tpointfind(tname,tscale,callback){
-	Tpoint.find({'Ttitle': tname, 'Tscale': {$gte: tscale} }, function(err, tpoints){
+exports.tpointfindbynas = function tpointfind(tscale,txlon,  
+ txlat, callback){
+	Tpoint.find({'Tscale': {$gte: tscale}, 'Tlon':{$gte: 103.9907386-txlon, $lte: 103.9907386+txlon}, 'Tlat':{$gte: 30.555103-txlat, $lte: 30.555103+txlat}}, function(err, tpoints){
 		if(err) console.log(err);
 		callback("查找成功",tpoints);
 		})
