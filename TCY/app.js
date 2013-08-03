@@ -6,6 +6,12 @@ var express = require('express')
   , db = require('./db')	
   , routes = require('./routes')
   , user = require('./routes/user')
+  , map = require('./routes/map')
+  , xiaoyu = require('./routes/xiaoyu')
+  , button = require('./routes/button')
+  , sockets = require('./routes/sockets')
+ // , gotoj = require('./routes/gotojquery')
+  //, gotou = require('./routes/gotoupdate')
   , http = require('http')
   , path = require('path')
 //  , io = require('socket')
@@ -35,20 +41,19 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/map', map.show);
+app.get('/xiaoyu', xiaoyu.xiaoyu);
+app.get('/button', button.show);
+app.get('/socketcopy', sockets.show);
 
-var server = http.createServer(app).listen(app.get('port'), function(){
+//app.get('/gjquery', gotoj.gotojquery);
+
+server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+io = require('socket.io').listen(server);
 
-var io = require('socket.io').listen(server);
 
-io.sockets.on('connection', function(socket){
-		setInterval(function(){
-			socket.emit('news', {hello: 'world'})}
-			, 5000);
-		socket.on('my other event', function(data){
-				console.log(data);
-//				socket.emit('news', {hello: 'world'});
-			});
-	});
+
+

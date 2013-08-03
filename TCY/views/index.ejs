@@ -3,6 +3,12 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script language="javascript" src="javascripts/savedata.js"></script>
+    <script>
+    var result = <%- JSON.stringify(result) %>;
+    if(result != null) console.log("傳值成功");
+    savedata(result);
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>

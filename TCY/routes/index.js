@@ -3,11 +3,25 @@
  * GET home page.
  */
 
+
 var tpointdao = require('../commondao');
 var Tpoint = tpointdao.model;
 
 exports.index = function(req, res){
-/*	
+
+    /*
+    io.sockets.on('connection', function(socket){
+        setInterval(function(){
+                socket.emit('news', {hello: 'world'})}
+            , 5000);
+        socket.on('my other event', function(data){
+            console.log(data);
+//				socket.emit('news', {hello: 'world'});
+        });
+    });
+    */
+     //   res.render("socket",{title: "Hello chuandadexiaoyu!!"});
+/*
 	var Tp = new Tpoint({
 		Ttitle: "川大江安停車場",
 		Tcomment: [{body:"很好的停車場呢", auth: 'chuandadexiaoyu', date: new Date() }],
@@ -26,11 +40,12 @@ exports.index = function(req, res){
 	tpointdao.tpointfindbynas(20, 0.0027, 0.0024, function(err,tpoints){
 //		console.log(tpoints);
 //		console.log(tpoints.length);
-		console.log("傳值成功，開始跳轉");
-		res.render('socket',{
+//		console.log("傳值成功，開始跳轉");
+		res.render('index',{
 			title: 'Express',
-			result: tpoints,
+			result: tpoints
 			});
-		});		
+		});
+
 };
 

@@ -3,10 +3,12 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 #demo{
 	margin-left: 500px;
 	margin-right: auto;
+	background-color: black;
 }
 #map{
 	margin-left: auto;
@@ -20,6 +22,7 @@
 
 <script>
 var result = <%- JSON.stringify(result) %>;
+console.log("Hello chuandadexiaoyu!");
 </script>
 
 </head>
@@ -28,7 +31,7 @@ var result = <%- JSON.stringify(result) %>;
 
 <body onLoad="mapfortpoints(result)">
  
-<h1 id="demo">這裡顯示的是你的地圖</h1>
+<h1 id="demo">Hello Map</h1>
 <div id="map">
 </div>
 X：<input type="text" name="mapX" id="mapX" value=""> Y：</td><td width="86%"><input type="text" name="mapY" id="mapY" value=""> 
@@ -39,8 +42,8 @@ X：<input type="text" name="mapX" id="mapX" value=""> Y：</td><td width="86%">
 
 </html>
 
-<script language="javascript" src="/javascripts/getcurrent.js"></script>
 
-<script language="javascript" src="/javascripts/mapinit.js"></script>
 
-<script language="javascript" src="/javascripts/mapshow.js"></script>
+<script language="javascript" src="javascripts/mapinit.js"></script>
+
+<script language="javascript" src="javascripts/mapshow.js"></script>
