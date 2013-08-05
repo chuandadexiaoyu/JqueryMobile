@@ -8,18 +8,18 @@ var tpointdao = require('../commondao');
 var Tpoint = tpointdao.model;
 
 exports.index = function(req, res){
-
-    /*
-    io.sockets.on('connection', function(socket){
-        setInterval(function(){
-                socket.emit('news', {hello: 'world'})}
-            , 5000);
-        socket.on('my other event', function(data){
-            console.log(data);
-//				socket.emit('news', {hello: 'world'});
+/*
+    io.sockets.on("connection", function(socket){
+            socket.on('my other event', function(data){
+                socket.broadcast.emit('news', data);
+                console.log(data);
         });
+
+
+//        socket.disconnect(socket);
+//				socket.emit('news', {hello: 'world'});
     });
-    */
+*/
      //   res.render("socket",{title: "Hello chuandadexiaoyu!!"});
 /*
 	var Tp = new Tpoint({

@@ -1,8 +1,7 @@
 var obj;
 var cup = JSON.parse(localStorage.currentposition);
-
 var position = new AMap.LngLat(cup.Tlon, cup.Tlat);
-var radius = 300;
+var radius = 350;
 	//初始化3D地圖
 	creobj(position);
 	crecircle(obj, radius);
@@ -13,6 +12,7 @@ var scale = 70;
 var surplus = 30;
 var info = creinfo(title, scale, surplus, comment);
 var infowindow = creinfowindow(info);
+
 
 //確定當前位置和顯示查詢數據
 function mapfortpoints(result){
@@ -32,7 +32,17 @@ function mapfortpoints(result){
 	marker = cremarker(position, obj);	
 	infowindow = creinfowindow(info);
 	addlisten(marker, infowindow, obj);
+
+
+//        var x=document.getElementById("川大江安停車場2");
+//        console.log(x.innerHTML);
+/*
+    var y = document.getElementsByClassName('amap-statics');//.getElementById('川大江安停車場10');
+        console.log(y[0]);
+*/
 	}
+    init();
+
 }
 
 function creobj(position){
@@ -59,13 +69,13 @@ function cremarker(position,obj){
 function creinfo(title, scale, surplus, comment){
 	var info = [];
 	
-	info.push("<div><div><img style=\"float:left;\" src=\" 		 http://webapi.amap.com/images/autonavi.png \"/></div> ");
+	info.push("<div id=title ><div><img style=\"float:left;\" src=\" 		 http://webapi.amap.com/images/autonavi.png \"/></div> ");
 
-	info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>這裡是"+title+"</b>"); 
+	info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>這裡是"+title+"</b>");
 
-	info.push("本停車場可以容納: "+scale+" 輛車"); 
+	info.push("本停車場可以容納: "+ scale  +" 輛車");
 
-	info.push("現在還有 "+surplus+" 個停車位");
+	info.push("現在還有 "+"<p" + " id="+ title+">"+surplus+ "</p>"+" 個停車位");
 	info.push("評語:  "+comment+"</div></div>");
 	
 	return info;
@@ -119,4 +129,46 @@ function fn(e){
 function mapclick() 
 { 
 	listener=AMap.event.addListener(obj,'click',fn);
-} 
+}
+
+//socket for map 監聽停車剩餘車位的變化
+
+var GET_DATA = 'news';
+var socket;
+results  = JSON.parse(localStorage.result);
+function init(){
+    socket = io.connect('http://localhost/',{port: 3000});
+    console.log("connect to server success!");
+    socket.on(GET_DATA, onGetData);
+
+}
+//在這個函數里更新數據
+function onGetData(data){
+    var datas = JSON.stringify(data);
+    console.log("收到數據！！");
+    console.log(datas);
+    for(var i=0; i<results.length; i++){
+        if(results[i].Ttitle == data.Ttitle)
+        {
+            //存儲數據
+            var x = results[i];
+            x.Tsurplus = data.Tsurplus;
+            results[i] = x;
+            localStorage.result = JSON.stringify(results);
+
+            //更新數據
+            var pupd = new AMap.LngLat(x.Tlon, x.Tlat);
+            var titleupd = x.Ttitle;
+            var commentupd = x.Tcomment[0].body;
+            var scaleupd = x.Tscale;
+            var surplusupd = x.Tsurplus;
+            var infoupd = creinfo(titleupd, scaleupd, surplusupd,commentupd);
+            var markerupd = cremarker(pupd, obj);
+            var infowindowupd = creinfowindow(infoupd);
+            addlisten(markerupd, infowindowupd, obj);
+            //更新成功
+            console.log("更新成功");
+            break;
+        }
+    }
+}

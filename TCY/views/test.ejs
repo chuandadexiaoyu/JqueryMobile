@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 #demo{
 	margin-left: 500px;
@@ -19,6 +20,9 @@
 }
 </style>
 <script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=0335a544e98689d874dfc0fa5a06b47f"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
 
 <script>
 var result = <%- JSON.stringify(result) %>;
@@ -31,7 +35,7 @@ console.log("Hello chuandadexiaoyu!");
 
 <body onLoad="mapfortpoints(result)">
  
-<h1 id="demo">Hello Map</h1>
+<h1 id="川大23">Hello Map</h1>
 <div id="map">
 </div>
 X：<input type="text" name="mapX" id="mapX" value=""> Y：</td><td width="86%"><input type="text" name="mapY" id="mapY" value=""> 
@@ -42,8 +46,9 @@ X：<input type="text" name="mapX" id="mapX" value=""> Y：</td><td width="86%">
 
 </html>
 
+<script>
+</script>
+
+<script language="javascript" src="/javascripts/mapshow.js"></script>
 
 
-<script language="javascript" src="javascripts/mapinit.js"></script>
-
-<script language="javascript" src="javascripts/mapshow.js"></script>

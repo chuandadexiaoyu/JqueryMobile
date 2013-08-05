@@ -3,11 +3,14 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script language="javascript" src="javascripts/savedata.js"></script>
+    <script language="javascript" src="/javascripts/savedata.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script language="javascript" src="/javascripts/socket.js"></script>
     <script>
     var result = <%- JSON.stringify(result) %>;
     if(result != null) console.log("傳值成功");
     savedata(result);
+    init();
     </script>
   </head>
   <body>

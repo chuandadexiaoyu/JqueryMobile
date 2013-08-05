@@ -10,6 +10,8 @@ var express = require('express')
   , xiaoyu = require('./routes/xiaoyu')
   , button = require('./routes/button')
   , sockets = require('./routes/sockets')
+  , socketone = require('./routes/socketone')
+  , socketthree = require('./routes/socketthree')
  // , gotoj = require('./routes/gotojquery')
   //, gotou = require('./routes/gotoupdate')
   , http = require('http')
@@ -45,6 +47,8 @@ app.get('/map', map.show);
 app.get('/xiaoyu', xiaoyu.xiaoyu);
 app.get('/button', button.show);
 app.get('/socketcopy', sockets.show);
+app.get('/socketone', socketone.show);
+app.get('/socketthree', socketthree.show);
 
 //app.get('/gjquery', gotoj.gotojquery);
 
@@ -54,6 +58,15 @@ server = http.createServer(app).listen(app.get('port'), function(){
 
 io = require('socket.io').listen(server);
 
+    io.sockets.on("connection", function(socket){
+        socket.on('my other event', function(data){
+            socket.broadcast.emit('news', data);
+            console.log(data);
+        });
 
+
+//        socket.disconnect(socket);
+//				socket.emit('news', {hello: 'world'});
+    });
 
 
