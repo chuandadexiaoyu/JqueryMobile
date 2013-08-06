@@ -4,10 +4,13 @@
  */
 
 
-var tpointdao = require('../commondao');
-var Tpoint = tpointdao.model;
+//var tpointdao = require('../commondao');
+//var Tpoint = tpointdao.model;
 
 exports.index = function(req, res){
+
+
+    res.render('aindex');
 /*
     io.sockets.on("connection", function(socket){
             socket.on('my other event', function(data){
@@ -37,7 +40,7 @@ exports.index = function(req, res){
 			console.log("Write into Mongodb success!!");
 		});
 */
-	tpointdao.tpointfindbynas(20, 0.0027, 0.0024, function(err,tpoints){
+/*	tpointdao.tpointfindbynas(20, 0.0027, 0.0024, function(err,tpoints){
 //		console.log(tpoints);
 //		console.log(tpoints.length);
 //		console.log("傳值成功，開始跳轉");
@@ -46,6 +49,6 @@ exports.index = function(req, res){
 			result: tpoints
 			});
 		});
-
+  */
 };
 

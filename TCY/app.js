@@ -12,6 +12,9 @@ var express = require('express')
   , sockets = require('./routes/sockets')
   , socketone = require('./routes/socketone')
   , socketthree = require('./routes/socketthree')
+  , utilroute = require('./routes/utilroute')
+  , find =require('./routes/find')
+  , select = require('./routes/select')
  // , gotoj = require('./routes/gotojquery')
   //, gotou = require('./routes/gotoupdate')
   , http = require('http')
@@ -49,6 +52,9 @@ app.get('/button', button.show);
 app.get('/socketcopy', sockets.show);
 app.get('/socketone', socketone.show);
 app.get('/socketthree', socketthree.show);
+app.get('/utilroute', utilroute.show);
+app.get('/find', find.show);
+app.get('/select', select.show);
 
 //app.get('/gjquery', gotoj.gotojquery);
 
