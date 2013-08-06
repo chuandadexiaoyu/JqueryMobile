@@ -14,7 +14,9 @@ var express = require('express')
   , socketthree = require('./routes/socketthree')
   , utilroute = require('./routes/utilroute')
   , find =require('./routes/find')
-  , select = require('./routes/select')
+  , option = require('./routes/option')
+  , map = require('./routes/map')
+  , list = require('./routes/list')
  // , gotoj = require('./routes/gotojquery')
   //, gotou = require('./routes/gotoupdate')
   , http = require('http')
@@ -49,12 +51,14 @@ app.get('/users', user.list);
 app.get('/map', map.show);
 app.get('/xiaoyu', xiaoyu.xiaoyu);
 app.get('/button', button.show);
-app.get('/socketcopy', sockets.show);
-app.get('/socketone', socketone.show);
+//app.get('/socketcopy', sockets.show);
+//app.get('/socketone', socketone.show);
 app.get('/socketthree', socketthree.show);
 app.get('/utilroute', utilroute.show);
 app.get('/find', find.show);
-app.get('/select', select.show);
+app.get('/option', option.show);
+app.get('/map', map.show);
+app.get('/list', list.show);
 
 //app.get('/gjquery', gotoj.gotojquery);
 

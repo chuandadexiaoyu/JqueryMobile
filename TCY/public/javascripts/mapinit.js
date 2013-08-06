@@ -1,10 +1,9 @@
-var obj;
 var cup = JSON.parse(localStorage.currentposition);
 
 //確定當前位置
-function mapInit(){
-	obj = new AMap.Map("map",{
-		center:new AMap.LngLat(cup.Tlon,cup.Tlat),
+function mapinit(){
+	var obj = new AMap.Map("map",{
+		center:new AMap.LngLat(cup.Tlon, cup.Tlat),
 		level:18
 	});
 	
