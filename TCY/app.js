@@ -56,7 +56,7 @@ app.get('/button', button.show);
 app.get('/socketthree', socketthree.show);
 app.get('/utilroute', utilroute.show);
 app.get('/find', find.show);
-app.get('/option', option.show);
+app.post('/option', option.show);
 app.get('/map', map.show);
 app.get('/list', list.show);
 

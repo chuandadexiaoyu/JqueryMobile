@@ -78,3 +78,11 @@ exports.tpointfindbynas = function tpointfind(tscale,txlon,
 		})
 }
 
+exports.findbydisandsur = function findbydisandsur(lon, lat, dislon, dislat, sur, callback){
+    Tpoint.find({ 'Tlon': {$gte: lon-dislon, $lte: lon+dislon}, 'Tlat': {$gte: lat-dislat, $lte: lat+dislat}, 'Tsurplus': {$gte: sur}},
+        function(err, tpoints){
+        if(err) console.log(err);
+        callback("查詢成功", tpoints);
+    }
+    )
+}

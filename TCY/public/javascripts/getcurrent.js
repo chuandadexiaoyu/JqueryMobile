@@ -18,7 +18,8 @@ function success(pos) {
 		localStorage.currentacu = crd.accuracy;
         console.log("當前位置數據數據存儲成功了。");
        //更新經緯度的輸入數據，讓用戶和開發者知道位置
-
+        document.getElementById("inputx").value ="經度：" + Math.round(lon * 1000000) / 1000000.00;;
+        document.getElementById("inputy").value ="緯度：" + Math.round(lat * 1000000) / 1000000.00;
        }else{
 		console.log("web storage not supports");
         alert("您的瀏覽器不支持本地存儲，不適合用YI軟件，請諒解。");

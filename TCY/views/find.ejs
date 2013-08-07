@@ -10,6 +10,7 @@
 
   <script type="text/javascript">
   getc(success, error, options);
+  var x = 3;
   </script>
   </head>
 
@@ -22,16 +23,17 @@
       <div>
       <div id="map" class="panel panel-info" style="height: 260px;">地圖信息</div>
       </div>
-
-      <div>
+      <!-- 無奈，只能用表單提交數據 -->
+      <form method="post" action="/option">
+      <div class="form-group">
       <div class="panel panel-info">
-      <div class="row">
-      <div class="col-lg-6" id="inputx">
-
+      <div class="row" style="">
+      <div class="col-lg-6"  style="">
+      <input id="inputx" name="inputx" type="text" class="form-control">
       </div>
 
-      <div class="col-lg-6" id="inputy">
-
+      <div class="col-lg-6"  style="">
+      <input id="inputy" name="inputy" type="text" class="form-control">
       </div>
       </div>
       </div>
@@ -45,24 +47,29 @@
       <div class="jumbotron" style="height: 451px;">
 
       <div class="col-lg-12" style="margin-top: 2px;">
-      <a href="#" type="button" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
-                <p class="text-center" style="padding-top: 5px;">XXX</p>
+      <a type="button" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
+                <p class="text-center" style="padding-top: 5px;">YI距離</p>
+                <input id="inputdis" name="inputdis" value="200" type="text" class="form-control" style="width: 25%; margin-left: 120px;">
       </a>
       </div>
       <div class="col-lg-12" style="margin-top: 30px;">
-      <a href="#" type="button" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
-                      <p class="text-center" style="padding-top: 5px;">XXX</p>
+      <a type="button" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
+                      <p class="text-center" style="padding-top: 5px;">YI空位</p>
+                      <input id="inputsur" name="inputsur" value="100" type="text" class="form-control" style="width: 25%; margin-left: 120px;">
             </a>
       </div>
       <div class="col-lg-12" style="margin-top: 30px;">
-      <a href="/option?id=5" type="button" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
-                      <p class="text-center" style="padding-top: 24px;">走起，YI起來</p>
-            </a>
+      <button type="submit" value="submit" class="btn btn-primary btn-lg btn-block" style="height: 100px;">
+                      <p class="text-center" style="">走起，YI起來</p>
+                 </button>
       </div>
 
       </div>
     </div>
   </div>
+
+  </form>
+
 
   <div class="row" style="margin-left: 48px;">
      <div class="col-lg-2">
@@ -71,6 +78,8 @@
                        </a>
      </div>
   </div>
+
+
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
 
@@ -78,8 +87,4 @@
 </html>
 
 <script type="text/javascript">
-      var x1 = document.getElementById("inputx");
-      var x2 = document.getElementById("inputy");
-      x1.innerHTML = "chuandadexiaoyu";
-      x2.innerHTML = "你好！！";
 </script>
