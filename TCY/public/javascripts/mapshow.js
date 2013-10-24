@@ -1,11 +1,15 @@
-var obj;
 var cup = JSON.parse(localStorage.currentposition);
 var position = new AMap.LngLat(cup.Tlon, cup.Tlat);
 var radius = 350;
 	//初始化3D地圖
-	creobj(position);
-	crecircle(obj, radius);
-var marker = cremarker(position, obj);
+objshow = new AMap.Map("mapshow",{
+    center:position,
+    level:17
+});
+var buildings = new AMap.Buildings();
+buildings.setMap(objshow);
+	crecircle(objshow, radius);
+var marker = cremarker(position, objshow);
 var title = "川大江安停車場";
 var comment = "很好的停車場哦";
 var scale = 70;
@@ -17,10 +21,8 @@ var infowindow = creinfowindow(info);
 //確定當前位置和顯示查詢數據
 function mapfortpoints(result){
 	//顯示當前位置
-	addlisten(marker, infowindow, obj);
-
-	//顯示返回的結果
-	
+	addlisten(marker, infowindow, objshow);
+   	//顯示返回的結果
 	for(var i=0; i<result.length; i++){
 		
 	position = new AMap.LngLat(result[i].Tlon, result[i].Tlat);
@@ -29,37 +31,29 @@ function mapfortpoints(result){
 	scale = result[i].Tscale;
 	surplus = result[i].Tsurplus;
 	info = creinfo(title, scale, surplus,comment);
-	marker = cremarker(position, obj);	
+	marker = cremarker(position, objshow);
 	infowindow = creinfowindow(info);
-	addlisten(marker, infowindow, obj);
-
-
-//        var x=document.getElementById("川大江安停車場2");
-//        console.log(x.innerHTML);
-/*
-    var y = document.getElementsByClassName('amap-statics');//.getElementById('川大江安停車場10');
-        console.log(y[0]);
-*/
+	addlisten(marker, infowindow, objshow);
 	}
-    init();
+//    init();
 
 }
 
-function creobj(position){
-	obj = new AMap.Map("map",{
+function creobj(position, objshow){
+    objshow = new AMap.Map("map",{
 		center:position,
 		level:17
 	});
 	var buildings = new AMap.Buildings();
-	buildings.setMap(obj);
+	buildings.setMap(objshow);
 }
 
 
 
-function cremarker(position,obj){
+function cremarker(position,objshow){
 		
 		return new AMap.Marker({
-		map: obj,
+		map: objshow,
 		position: position,
 		icon:"http://webapi.amap.com/images/0.png",
 		offset:new AMap.Pixel(0, 0)
@@ -91,20 +85,20 @@ function creinfowindow(info){
 	}); 
 }
 
-function addlisten(marker,infowindow,obj){
+function addlisten(marker,infowindow,objshow){
 		AMap.event.addListener(marker,'click',function(){
-		infowindow.open(obj, marker.getPosition());
+		infowindow.open(objshow, marker.getPosition());
 	});
 }
 
 
-function crecircle(obj, radius){
+function crecircle(objshow, radius){
 
 	circle = new AMap.Circle({
 
-	map:obj,
+	map:objshow,
 
-	center:obj.getCenter(),//圆心，基点
+	center:objshow.getCenter(),//圆心，基点
 
 	radius:radius,//半径
 
@@ -128,14 +122,14 @@ function fn(e){
 
 function mapclick() 
 { 
-	listener=AMap.event.addListener(obj,'click',fn);
+	listener=AMap.event.addListener(objshow, 'click', fn);
 }
 
 //socket for map 監聽停車剩餘車位的變化
-
+/*
 var GET_DATA = 'news';
 var socket;
-results  = JSON.parse(localStorage.result);
+//results  = JSON.parse(localStorage.result);
 function init(){
     socket = io.connect('http://localhost/',{port: 3000});
     console.log("connect to server success!");
@@ -163,12 +157,13 @@ function onGetData(data){
             var scaleupd = x.Tscale;
             var surplusupd = x.Tsurplus;
             var infoupd = creinfo(titleupd, scaleupd, surplusupd,commentupd);
-            var markerupd = cremarker(pupd, obj);
+            var markerupd = cremarker(pupd, objshow);
             var infowindowupd = creinfowindow(infoupd);
-            addlisten(markerupd, infowindowupd, obj);
+            addlisten(markerupd, infowindowupd, objshow);
             //更新成功
             console.log("更新成功");
             break;
         }
     }
 }
+*/

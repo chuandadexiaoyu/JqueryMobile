@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+
+
+  <body style="background: #464547">
+  <div style="margin: 100px;">
+  <div class="row">
+  <div class="col-lg-12">
+  <div id="box" class="jumbotron" style="height: 451px;overflow-y:scroll; border:1px solid;"">
+
+  <table class="table table-bordered table-hover">
+  <tr>
+      <th>名稱</th>
+      <th>總容量</th>
+      <th>剩餘車輛</th>
+      <th>操作</th>
+  </tr>
+  <%for(var i=0;i < result.length;i++){%>
+  <tr>
+  <td><%= result[i].Ttitle %></td>
+  <td><%= result[i].Tscale %></td>
+  <td><%= result[i].Tsurplus %></td>
+  <td><span class="btn btn-primary jia">加一</span><br><span class="btn btn-primary jian">減一</span></th>
+  </tr>
+  <%}%>
+
+  </table>
+
+  <form  action="/changedata" method="post" style="display:none">
+      <input type="text" id="tit" name="tit">
+      <input type="text" id="chose" name="chose">
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-1.8.0.min.js"></script>
+      <script>
+      $(".jia").on("click",function(e){
+         console.log("點擊成功！！!");
+         var t=$(e.target).parent().parent().find("td:eq(0)").text();
+         var change="jia";
+         $("form input:eq(0)").val(t);
+         $("form input:eq(1)").val(change);
+         console.log(t+change);
+         $("form").submit();
+      });
+      $(".jian").on("click",function(e){
+           console.log("點擊成功！！!");
+           var t=$(e.target).parent().parent().find("td:eq(0)").text();
+           var change="jian";
+           $("form input:eq(0)").val(t);
+           $("form input:eq(1)").val(change);
+           console.log(t+change);
+           $("form").submit();
+        });
+      </script>
+  </body>
+</html>

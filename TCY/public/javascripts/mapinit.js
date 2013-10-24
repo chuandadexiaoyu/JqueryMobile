@@ -1,6 +1,5 @@
 var cup = JSON.parse(localStorage.currentposition);
 
-//確定當前位置
 function mapinit(){
 	var obj = new AMap.Map("map",{
 		center:new AMap.LngLat(cup.Tlon, cup.Tlat),

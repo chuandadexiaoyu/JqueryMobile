@@ -1,8 +1,11 @@
 function savedata(result){
     if(typeof(Storage)!="undefined"){
         console.log("web storage supports");
-        localStorage.result = JSON.stringify(result);
-    //    console.log(localStorage.result);
+
+        localStorage.result =  result;
+
+//        var x = JSON.parse(localStorage.result);
+        console.log("The result has saved into localStorage.result");
     }else{
         console.log("web storage not supports");
     }
