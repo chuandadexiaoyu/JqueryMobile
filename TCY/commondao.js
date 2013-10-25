@@ -31,7 +31,7 @@ exports.tpointfindbyname = function tpointfind(tname,callback){
 		if(err) console.log(err);
 		
 		console.log(tpoints);
-		callback("",tpoints);
+		callback(tpoints);
 		})
 };
 

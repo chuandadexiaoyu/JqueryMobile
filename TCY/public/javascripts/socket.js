@@ -9,7 +9,6 @@ results  = JSON.parse(localStorage.result);
 function init(){
 	socket = io.connect('http://localhost/',{port: 3000});
     console.log("connect to server success!");
-    socket.emit('my other event',changedata);
 	socket.on(GET_DATA, onGetData);
 }
 	

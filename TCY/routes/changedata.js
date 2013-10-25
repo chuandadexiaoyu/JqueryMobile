@@ -5,25 +5,11 @@ exports.show = function(req, res){
       var chose=req.body.chose;
       console.log("進來了！！！"+tit);
       if(chose==="jia"){
-          tpointdao.tpointupdatejia(tit,function(tp){
-           /*
-          io.sockets.on("connection",function(socket){
-              socket.emit('news',{data: tp});
-          });
-          */
-              console.log("跳轉開始");
-          res.redirect('/admin');
-          })
+          tpointdao.tpointupdatejia(tit);
       }
       else{
-          tpointdao.tpointupdatejian(tit,function(tp){
-              /*
-          io.sockets.on("connection",function(socket){
-              socket.emit('news',{data: tp});
-          });
-          */
-              console.log("跳轉開始");
-          res.redirect('/admin');
-          })
+          tpointdao.tpointupdatejian(tit);
       }
+
+    res.redirect('/admin');
 };

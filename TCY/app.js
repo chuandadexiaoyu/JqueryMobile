@@ -14,7 +14,6 @@ var express = require('express')
   , woaixiaoguniang = require('./routes/woaixiaoguniang')
   , http = require('http')
   , path = require('path')
-
   ;
 
 var app = express();
@@ -47,19 +46,42 @@ app.get('/map', map.show);
 app.get('/list', list.show);
 app.get('/woaixiaoguniang', woaixiaoguniang.show);
 app.get('/admin',admin.show);
-app.post('/changedata',changedata.show);
-
 
 server = http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
 
-io = require('socket.io').listen(server);
-    io.sockets.on("connection", function(socket){
-        socket.on('my other event', function(data){
-            socket.broadcast.emit('news', data);
-            console.log(data);
+var io = require('socket.io').listen(server);
+io.set('log level', 1);
+var tpointdao = require('./commondao');
+var Tpoint = tpointdao.model;
+
+app.post('/changedata',function(req, res){
+    var tit=req.body.tit;
+    var chose=req.body.chose;
+    if(chose==="jia"){
+           tpointdao.tpointupdatejia(tit,function(tp){
+               console.log("success");
+           });
+        }
+    else{
+        tpointdao.tpointupdatejian(tit,function(tp){
+            console.log("success");
         });
+        }
+    console.log("跳轉開始");
+
+    tpointdao.tpointfindbyname(tit,function(tpoints){
+        console.log("I am here");
+        io.sockets.emit('news',{data: tpoints});
     });
+
+    res.redirect('/admin');
+});
+
+
+
+
+
 
 

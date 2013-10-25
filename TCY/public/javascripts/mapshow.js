@@ -69,7 +69,7 @@ function creinfo(title, scale, surplus, comment){
 
 	info.push("本停車場可以容納: "+ scale  +" 輛車");
 
-	info.push("現在還有 "+"<p" + " id="+ title+">"+surplus+ "</p>"+" 個停車位");
+	info.push("現在還有 "+"<p" + " id="+ title+"sur"+">"+surplus+ "</p>"+" 個停車位");
 	info.push("評語:  "+comment+"</div></div>");
 	
 	return info;
